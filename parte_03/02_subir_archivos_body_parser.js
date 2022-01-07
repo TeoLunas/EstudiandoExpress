@@ -60,7 +60,3 @@ app.post("/", (req, res) => {
         res.send('Archivo cargado con exito!');
     })
 });
-
-app.get('/home', (req, res) => {
-    res.send('Hola')
-});

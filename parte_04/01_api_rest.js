@@ -58,12 +58,12 @@ app.post('/canal', async(req, res) => {
     res.send(canales);
 });
 
-//Ruta que recibe como parametro el nombre del canal que se desea camiar y un payload en formato json con el nuevo nombre. Se devuelve el arreglo modificado como respuesta de esta ruta al cliente.
+//Ruta que recibe como parametro el nombre del canal que se desea cambiar y un payload en formato json con el nuevo nombre. Se devuelve el arreglo modificado como respuesta de esta ruta al cliente.
 app.put('/canal/:canal', async(req, res) => {
     const { canal } = req.params;
     const { nombre } = req.body;
     
-    canales = canales.map( (c) => (c.nombre == cana ? { nombre } : c) );
+    canales = canales.map( (c) => (c.nombre == canal ? { nombre } : c) );
     res.send(canales);
 });
 
