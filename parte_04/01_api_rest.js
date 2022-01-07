@@ -41,3 +41,29 @@ app.use(bodyParser.json());
 app.listen(3000, () => {
     console.log('App corriendo en puerto 3000');
 });
+
+let canales = [ { nombre: 'TNT'}, {nombre: 'ESP'} ];
+
+app.get('/canales', (req, res) => {
+    res.send(canales);
+});
+
+app.post('/canal', async(req, res) => {
+    const nuevo_Canal = req.body;
+    canales.push(nuevo_Canal);
+    res.send(canales);
+});
+
+app.put('/canal/:canal', async(req, res) => {
+    const { canal } = req.params;
+    const { nombre } = req.body;
+    
+    canales = canales.map( (c) => (c.nombre == cana ? { nombre } : c) );
+    res.send(canales);
+});
+
+app.delete('/canal/:canal', async(req, res) => {
+    const { canal } = req.params;
+    canales = canales.filter( (c) => c.nombre !== canal );
+    res.send(canales);
+});
